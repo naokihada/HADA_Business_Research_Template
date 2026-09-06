@@ -66,8 +66,8 @@ Every evidence file and report must state:
 | Sample | Template usage plus filled fictional project |
 | Dev | Private engineering history |
 
-Sample should reference Template release version after the user creates the tag
-(for example v0.1.0). The tag is not created until after commit and push.
+Sample should reference the Template release version in README when a public
+release tag is published (for example v0.1.0).
 
 ---
 

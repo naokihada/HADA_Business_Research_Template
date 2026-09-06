@@ -238,10 +238,17 @@ CI: [.github/workflows/validate.yml](.github/workflows/validate.yml)（シーク
 
 ## ライセンス
 
-Apache License 2.0 — 詳細は [LICENSE](LICENSE) と [NOTICE](NOTICE) を参照。
+Apache License 2.0.
 
-NOTICE の著作権表示は、著作権者確認待ちのプレースホルダーを使用しています。
-リリースタグ v0.1.0 は commit/push 後に作成予定です。
+Copyright 2026 Naoki Hada.
+
+詳細は [LICENSE](LICENSE)（ライセンス全文）および [NOTICE](NOTICE)（帰属表示）を参照してください。
+
+---
+
+## 免責事項
+
+重要な免責事項、制限事項、および利用者の責任については [DISCLAIMER.md](DISCLAIMER.md) を参照してください。
 
 ---
 

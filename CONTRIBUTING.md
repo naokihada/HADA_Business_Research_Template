@@ -64,5 +64,5 @@ sums consistent with `score_total`.
 By contributing, you agree that your contributions are licensed under the
 Apache License 2.0.
 
-The NOTICE file may contain a copyright placeholder until the copyright holder
-is confirmed — do not invent legal entity names in pull requests.
+Copyright 2026 Naoki Hada. See [NOTICE](NOTICE) for attribution information.
+See [DISCLAIMER.md](DISCLAIMER.md) for important disclaimers.

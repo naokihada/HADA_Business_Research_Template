@@ -1,0 +1,41 @@
+name: Validate Template
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prompt format audit
+        run: python tools/check_prompts.py --prompts-dir prompts
+
+      - name: Validate example config and master header
+        run: |
+          python tools/validate_research_data.py \
+            --master data/master/candidates_master.csv \
+            --config-dir config/research/_example_project
+
+      - name: Validate CPA domain pack (fictional)
+        run: |
+          python tools/validate_research_data.py \
+            --master examples/domain_packs/cpa/data/candidates_master.csv \
+            --config-dir examples/domain_packs/cpa/config
+
+      - name: Bootstrap dry-run
+        run: python tools/bootstrap_project.py ci-test-project --dry-run
+
+      - name: Check for Windows absolute paths in rules and prompts
+        run: |
+          if grep -rE '[A-Za-z]:\\' .cursor/rules prompts 2>/dev/null; then
+            echo "Found absolute Windows paths"
+            exit 1
+          fi
+          echo "No absolute Windows paths found"

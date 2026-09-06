@@ -1,0 +1,54 @@
+# Shortlist Rules — CPA Domain Pack (Fictional)
+
+disqualifiers:
+  - condition: gate professional_type_cpa = NO
+    action: EXCLUDED
+  - condition: gate federal_individual_tax = NO
+    action: EXCLUDED
+  - condition: gate california_individual_tax = NO
+    action: EXCLUDED
+  - condition: gate scorp_taxation = NO
+    action: EXCLUDED
+  - condition: research_status = INACTIVE
+    action: EXCLUDED
+
+tiers:
+  TIER_1:
+    label_ja: 第一候補
+    requirements:
+      min_recommendation: B
+      min_confidence: MEDIUM
+      min_score: 70
+      required_gates_yes:
+        - currently_operating
+        - professional_type_cpa
+        - federal_individual_tax
+        - california_individual_tax
+      scorp_gate: YES or LIKELY
+      block_if_unknown:
+        - historical_file_review
+
+  TIER_2:
+    label_ja: 有力代替
+    requirements:
+      min_recommendation: B
+      min_score: 55
+      allows_gate_unknown:
+        - scorp_taxation
+        - historical_file_review
+
+  TIER_3:
+    label_ja: 予備
+    requirements:
+      min_recommendation: C
+      min_score: 40
+
+  EXCLUDED:
+    label_ja: 除外
+
+shortlist_is_not_score_only: true
+
+follow_up_before_selection:
+  - Confirm S-Corp preparation experience if UNKNOWN
+  - Confirm historical file review timeline
+  - Confirm 2026 tax year client acceptance

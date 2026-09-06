@@ -1,0 +1,58 @@
+# QC Modules — Example Project
+
+# QC modules are optional. Enable per project needs.
+
+modules:
+  - id: source_quality_review
+    label_ja: ソース品質レビュー
+    label_en: Source quality review
+    enabled: true
+    scope: all
+    template: templates/qc_result.md
+    evidence_dir: evidence/qc_source_quality
+    summary_csv: scoring/qc_source_quality_summary.csv
+    skip_when:
+      - eligibility_status = NOT_ELIGIBLE
+    checks:
+      - id: tier1_for_core_claims
+        label_ja: コアクレームに Tier 1 ソースあり
+      - id: no_tier4_only_core
+        label_ja: コアクレームが Tier 4 のみではない
+
+  - id: consistency_review
+    label_ja: 整合性レビュー
+    label_en: Consistency review
+    enabled: true
+    scope: top_n
+    top_n: 5
+    evidence_dir: evidence/qc_consistency
+    summary_csv: scoring/qc_consistency_summary.csv
+    checks:
+      - id: dossier_scoring_alignment
+        label_ja: ドシエとスコアの整合
+      - id: gate_evidence_alignment
+        label_ja: ゲート判定と証拠の整合
+
+  - id: reputation_review
+    label_ja: 評判レビュー
+    label_en: Reputation review
+    enabled: false
+    description: Optional — enable for consumer-facing vendor research
+    evidence_dir: evidence/qc_reputation
+    summary_csv: scoring/qc_reputation_summary.csv
+
+  - id: regulatory_verification
+    label_ja: 規制・認証確認
+    label_en: Regulatory verification
+    enabled: false
+    description: Optional — enable when certifications or licenses matter
+    evidence_dir: evidence/qc_regulatory
+    summary_csv: scoring/qc_regulatory_summary.csv
+
+execution_order:
+  - source_quality_review
+  - consistency_review
+
+notes: |
+  QC outcomes may change shortlist independently of score.
+  Record skip reasons for NOT_ELIGIBLE candidates.

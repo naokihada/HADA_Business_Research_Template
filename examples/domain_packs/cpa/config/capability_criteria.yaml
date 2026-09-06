@@ -1,0 +1,31 @@
+# Capability Criteria — CPA Domain Pack
+
+criteria:
+  - id: federal_individual
+    label_ja: 連邦個人税
+    category: core_tax
+  - id: california_individual
+    label_ja: CA州個人税
+    category: core_tax
+  - id: schedule_c
+    label_ja: Schedule C
+    category: core_tax
+  - id: scorp_returns
+    label_ja: S-Corp 申告
+    category: core_tax
+  - id: irs_representation
+    label_ja: IRS代表 / 争訟
+    category: controversy
+  - id: crossborder_us_jp
+    label_ja: 日米クロスボーダー
+    category: crossborder
+  - id: estate_gift
+    label_ja: エステート / ギフト
+    category: estate
+  - id: in_person_consult
+    label_ja: 対面相談
+    category: engagement
+  - id: japanese_language
+    label_ja: 日本語対応
+    category: communication
+    notes: Preference only — not automatic score bonus

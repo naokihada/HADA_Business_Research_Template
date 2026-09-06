@@ -1,0 +1,13 @@
+# Discovery Sources — CPA Domain Pack
+
+sources:
+  - key: fictional_directory_gamma
+    label_ja: 架空CPAディレクトリ Gamma
+    wave_id: wave1
+    id_prefix: FCPA
+    type: directory
+    trust_level: discovery_only
+
+import_rules:
+  - Directory listing is not proof of CPA license or tax capability
+  - Preserve original listing values when corrected during research

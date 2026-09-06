@@ -1,0 +1,53 @@
+# CPA Domain Pack — Project Configuration (Fictional)
+
+project_id: 2026-09-cpa-fictional-example
+domain_pack: cpa
+title: 架空CPA選定リサーチ（ドメインパック例示）
+title_en: Fictional CPA Selection Research (Domain Pack Demo)
+
+evidence_mode: simulated
+# simulated = evidence is workflow demonstration only, not live web research
+# live = normal external research expected
+
+objective_ja: |
+  架空の個人・S-Corpクライアント向けに、シリコンバレー周辺のCPA候補を
+  証拠に基づき比較する。本プロジェクトはドメインパックの動作例示であり、
+  実在のCPA推薦ではない。
+
+candidate_type: professional_firm
+entity_types_allowed:
+  - ORGANIZATION
+  - INDIVIDUAL
+
+default_report_language: ja
+
+geographic_scope:
+  label_ja: シリコンバレー / ベイエリア（架空シナリオ）
+  regions:
+    - US-CA
+  local_preferred: true
+  remote_acceptable: true
+
+status: ACTIVE
+
+waves:
+  - id: wave1
+    label_ja: 第1波 — 架空ディレクトリ
+    prefix: FCPA
+    source_key: fictional_directory_gamma
+    description: Fictional CPA directory import for domain pack demo
+
+paths:
+  master_csv: examples/domain_packs/cpa/data/candidates_master.csv
+  research_root: research/2026-09-cpa-fictional-example
+  config_root: config/research/2026-09-cpa-fictional-example
+  domain_pack_root: examples/domain_packs/cpa
+
+output:
+  report_language: ja
+  ranking_csv: scoring/unified_ranking.csv
+  shortlist_md: shortlist/shortlist.md
+
+notes: |
+  Fictional CPA domain pack. All candidates and evidence are simulated.
+  CPA-specific gates and rubric live in this config only — not in generic engine.

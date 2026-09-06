@@ -1,0 +1,26 @@
+# Confidence Rules — CPA Domain Pack
+
+levels:
+  HIGH:
+    label_ja: 高
+    criteria: Core gates YES with Tier 1-2 evidence for tax capabilities
+  MEDIUM:
+    label_ja: 中
+    criteria: Most claims supported; some UNKNOWN on non-hard gates
+  LOW:
+    label_ja: 低
+    criteria: Key areas UNKNOWN or simulated evidence only
+  INSUFFICIENT_DATA:
+    label_ja: データ不足
+
+rules:
+  - Simulated evidence caps confidence at MEDIUM for capability claims
+  - UNKNOWN on scorp_taxation caps confidence at MEDIUM
+  - UNKNOWN on historical_file_review prevents TIER_1 unless otherwise documented
+  - Referrals alone do not raise confidence above MEDIUM
+
+shortlist_confidence_caps:
+  TIER_1:
+    min_confidence: MEDIUM
+  TIER_2:
+    min_confidence: LOW

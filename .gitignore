@@ -1,0 +1,42 @@
+# Secrets and environment
+.env
+.env.*
+*.secret.*
+*.key
+*.pem
+credentials.json
+
+# Inbox — user-provided raw material (keep README)
+data/inbox/*
+!data/inbox/README.md
+
+# Execution logs (may contain session details)
+logs/prompt-runs/*
+!logs/prompt-runs/.gitkeep
+
+# User research outputs (recommended for local-only work)
+logs/research/*
+!logs/research/.gitkeep
+research/*
+!research/.gitkeep
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# Local overrides
+config/local/
+*.local.yaml
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Cursor local state
+.cursor/**/cache/

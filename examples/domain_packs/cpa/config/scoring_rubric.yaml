@@ -1,0 +1,50 @@
+# Scoring Rubric — CPA Domain Pack (Fictional)
+
+max_total: 100
+
+dimensions:
+  - id: core_tax_capability
+    label_ja: コア税務能力
+    max_points: 25
+
+  - id: business_technology_fit
+    label_ja: ビジネス / テクノロジー適合
+    max_points: 15
+
+  - id: irs_tax_controversy
+    label_ja: IRS / 税務争訟対応
+    max_points: 10
+
+  - id: crossborder_tax
+    label_ja: 日米クロスボーダー税務
+    max_points: 20
+
+  - id: estate_inheritance
+    label_ja: 相続 / エステート関連
+    max_points: 10
+
+  - id: local_communication_fit
+    label_ja: 地域 / コミュニケーション
+    max_points: 10
+
+  - id: engagement_fit
+    label_ja: エンゲージメント適合
+    max_points: 10
+
+scoring_rules:
+  - Do not score on Japanese language or nationality alone
+  - Do not score on referrals without capability evidence
+  - Do not score on review counts or search ranking
+  - Simulated evidence must not receive VERIFIED-level confidence in live mode
+
+recommendation_bands:
+  A:
+    min_score: 75
+    min_confidence: MEDIUM
+  B:
+    min_score: 60
+    min_confidence: MEDIUM
+  C:
+    min_score: 40
+  D:
+    description: Hard gate failure or NOT_ELIGIBLE

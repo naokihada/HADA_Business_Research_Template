@@ -1,0 +1,46 @@
+# Eligibility Gates — CPA Domain Pack (Fictional)
+
+gates:
+  - id: currently_operating
+    label_ja: 現在稼働中の事務所
+    required_for_shortlist: true
+    hard_fail_values: [NO]
+
+  - id: professional_type_cpa
+    label_ja: CPA / 税務実務提供
+    required_for_shortlist: true
+    hard_fail_values: [NO]
+    description: Must be CPA or accounting/tax practice — not financial planner only
+
+  - id: federal_individual_tax
+    label_ja: 連邦個人税
+    required_for_shortlist: true
+    hard_fail_values: [NO]
+
+  - id: california_individual_tax
+    label_ja: カリフォルニア州個人税
+    required_for_shortlist: true
+    hard_fail_values: [NO]
+
+  - id: scorp_taxation
+    label_ja: S-Corp 税務
+    required_for_shortlist: true
+    hard_fail_values: [NO]
+
+  - id: historical_file_review
+    label_ja: 過去税務ファイルレビュー対応
+    required_for_shortlist: false
+    hard_fail_values: []
+
+  - id: engagement_timeline
+    label_ja: 2026税務年度エンゲージメント
+    required_for_shortlist: false
+    hard_fail_values: []
+
+unknown_rule: |
+  UNKNOWN does not auto-fail unless hard_fail_values includes it.
+  UNKNOWN on scorp_taxation or historical_file_review caps shortlist tier and confidence.
+
+domain_status_extensions:
+  - WRONG_CATEGORY
+  - NOT_ELIGIBLE

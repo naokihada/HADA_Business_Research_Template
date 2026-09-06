@@ -1,0 +1,52 @@
+# Project Configuration — Example Skeleton
+
+project_id: _example_project
+evidence_mode: live
+title: リサーチプロジェクト例（スケルトン）
+title_en: Research Project Example (Skeleton)
+
+objective_ja: |
+  この設定は新規プロジェクト用のスケルトンです。
+  bootstrap_project.py でコピー後、project_id と objective を編集してください。
+
+candidate_type: vendor
+entity_types_allowed:
+  - ORGANIZATION
+  - SERVICE
+
+default_report_language: ja
+
+geographic_scope:
+  label_ja: 調査対象地域を設定
+  regions:
+    - JP
+  remote_acceptable: true
+
+status: ACTIVE
+
+waves:
+  - id: wave1
+    label_ja: 第1波 — 初期ディスカバリ
+    prefix: W1
+    source_key: primary_source
+    description: Configure your first discovery source
+  - id: wave2
+    label_ja: 第2波 — 追加ディスカバリ
+    prefix: W2
+    source_key: secondary_source
+    description: Optional second wave
+
+paths:
+  master_csv: data/master/candidates_master.csv
+  research_root: research/<your-project-id>
+  config_root: config/research/_example_project
+
+output:
+  report_language: ja
+  ranking_csv: scoring/unified_ranking.csv
+  shortlist_md: shortlist/shortlist.md
+
+notes: |
+  Copy this skeleton with tools/bootstrap_project.py.
+  See docs/guides/new-project-bootstrap.md.
+  For a complete fictional demonstration, see HADA_Business_Research_Template_Sample.

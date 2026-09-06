@@ -1,0 +1,54 @@
+# Capability Criteria — Example Project
+
+# Used in dossier capability matrix and capability evaluation prompts.
+
+criteria:
+  - id: backup_scope
+    label_ja: バックアップ対象範囲（ファイル / アプリ / VM 等）
+    label_en: Backup scope (files, apps, VM, etc.)
+    category: core
+
+  - id: restore_options
+    label_ja: 復元オプション（ポイントインタイム等）
+    label_en: Restore options (point-in-time, etc.)
+    category: core
+
+  - id: encryption
+    label_ja: 暗号化（転送中・保存時）
+    label_en: Encryption (in transit and at rest)
+    category: security
+
+  - id: admin_console
+    label_ja: 管理コンソール / 運用 UI
+    label_en: Admin console / operational UI
+    category: operations
+
+  - id: api_available
+    label_ja: API 提供
+    label_en: API availability
+    category: integration
+
+  - id: sso_support
+    label_ja: SSO / IdP 連携
+    label_en: SSO / IdP integration
+    category: integration
+
+  - id: pricing_public
+    label_ja: 公開料金情報
+    label_en: Public pricing information
+    category: commercial
+
+  - id: support_channels
+    label_ja: サポートチャネル
+    label_en: Support channels
+    category: support
+
+evaluation_status_values:
+  - YES
+  - NO
+  - LIKELY
+  - UNKNOWN
+
+notes: |
+  Map criteria to scoring dimensions in scoring_rubric.yaml.
+  Do not assume capability from vendor name or category listing alone.

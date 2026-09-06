@@ -1,0 +1,54 @@
+# Eligibility Gates — Example Project
+
+# Gates determine eligibility or exclusion — not comparative score.
+# Status values: YES | NO | LIKELY | UNKNOWN
+
+gates:
+  - id: currently_operating
+    label_ja: 現在サービス提供中
+    label_en: Currently operating
+    required_for_shortlist: true
+    hard_fail_values:
+      - NO
+    description: Vendor must be actively offering the service
+
+  - id: core_service_match
+    label_ja: コアサービス（クラウドバックアップ）に対応
+    label_en: Core service match (cloud backup)
+    required_for_shortlist: true
+    hard_fail_values:
+      - NO
+    description: Must provide cloud backup — not unrelated product only
+
+  - id: geographic_coverage
+    label_ja: 対象地域で利用可能
+    label_en: Available in target geography
+    required_for_shortlist: true
+    hard_fail_values:
+      - NO
+    description: Must serve JP and/or US per project scope
+
+  - id: enterprise_sso
+    label_ja: エンタープライズ SSO 対応
+    label_en: Enterprise SSO support
+    required_for_shortlist: false
+    hard_fail_values: []
+    description: Preferred but not mandatory — UNKNOWN allowed
+
+  - id: api_integration
+    label_ja: API / 自動化連携
+    label_en: API or automation integration
+    required_for_shortlist: false
+    hard_fail_values: []
+    description: Preferred for integration workflow
+
+  - id: contract_flexibility
+    label_ja: 月次契約または試用可能
+    label_en: Monthly contract or trial available
+    required_for_shortlist: false
+    hard_fail_values: []
+    description: Engagement fit gate
+
+unknown_rule: |
+  UNKNOWN does not automatically fail a gate unless hard_fail_values includes it.
+  UNKNOWN reduces confidence and may block highest shortlist tier until confirmed.

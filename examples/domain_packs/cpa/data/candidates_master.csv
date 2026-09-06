@@ -1,0 +1,4 @@
+candidate_id,canonical_slug,display_name,organization,entity_type,phone,address,city,region,country,postal_code,website,source,referral,wave_id,research_status,canonical_candidate_id,notes
+FCPA-001,bay-mesa-tax-partners,Bay Mesa Tax Partners LLP,Bay Mesa Tax Partners LLP,ORGANIZATION,,100 Example Plaza,Los Altos,CA,US,94022,https://example.invalid/baymesa,fictional_directory_gamma,,wave1,RESEARCHED,,Fictional eligible CPA firm
+FCPA-002,tanaka-crossborder-advisory,Tanaka Crossborder Advisory,Tanaka Crossborder Advisory,ORGANIZATION,,200 Sample Street,San Jose,CA,US,95110,https://example.invalid/tanaka-cpa,fictional_directory_gamma,,wave1,RESEARCHED,,Fictional CPA with UNKNOWN gates
+FCPA-003,redwood-financial-planning,Redwood Financial Planning,Redwood Financial Planning Inc,ORGANIZATION,,300 Demo Boulevard,Redwood City,CA,US,94063,https://example.invalid/redwood-fp,fictional_directory_gamma,,wave1,RESEARCHED,,Fictional financial planner — not CPA practice

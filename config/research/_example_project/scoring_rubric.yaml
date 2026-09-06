@@ -1,0 +1,65 @@
+# Scoring Rubric — Example Project
+
+max_total: 100
+
+dimensions:
+  - id: core_capability
+    label_ja: コア機能（バックアップ・復元）
+    label_en: Core capability (backup and restore)
+    max_points: 30
+    description: Backup scope, restore options, versioning, reliability signals
+
+  - id: security_compliance
+    label_ja: セキュリティ・コンプライアンス
+    label_en: Security and compliance
+    max_points: 20
+    description: Encryption, access control, certifications if verified
+
+  - id: integration_fit
+    label_ja: 連携・運用適合
+    label_en: Integration and operational fit
+    max_points: 20
+    description: API, SSO, admin tooling, automation support
+
+  - id: cost_transparency
+    label_ja: コスト透明性
+    label_en: Cost transparency
+    max_points: 15
+    description: Public pricing clarity, predictable billing model
+
+  - id: support_quality
+    label_ja: サポート品質
+    label_en: Support quality
+    max_points: 15
+    description: Support channels, SLA signals if verified — not review count alone
+
+scoring_rules:
+  - Do not award points based on search ranking or popularity alone
+  - Do not award points based on referral without capability evidence
+  - Record evidence links for each dimension score
+  - UNKNOWN capability must not receive full points
+
+recommendation_bands:
+  A:
+    label_ja: 強力候補
+    min_score: 75
+    min_confidence: MEDIUM
+    requires_no_hard_gate_failures: true
+  B:
+    label_ja: 有力候補
+    min_score: 60
+    min_confidence: MEDIUM
+    requires_no_hard_gate_failures: true
+  C:
+    label_ja: 予備候補
+    min_score: 40
+    min_confidence: LOW
+    requires_no_hard_gate_failures: false
+  D:
+    label_ja: 不適合
+    description: Hard gate failure or major incompatibility
+
+score_confidence_separation: |
+  score_total measures comparative fit.
+  confidence measures evidence quality — keep separate.
+  recommendation combines gates, score, and confidence.

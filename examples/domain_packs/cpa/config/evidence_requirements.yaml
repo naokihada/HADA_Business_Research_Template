@@ -1,0 +1,24 @@
+# Evidence Requirements — CPA Domain Pack
+
+minimum_for_scoring:
+  - Tier 1 or Tier 2 source for professional_type_cpa and core tax claims
+  - access_date on all external references
+  - simulated evidence must include SIMULATED banner in file header
+
+minimum_for_shortlist:
+  - All required gates evaluated
+  - regulatory_verification completed or skipped with reason
+  - confidence assigned
+
+core_claims:
+  - id: cpa_practice
+    minimum_tier: TIER_2_PROFESSIONAL
+  - id: scorp_capability
+    minimum_tier: TIER_1_OFFICIAL
+  - id: license_status
+    minimum_tier: TIER_1_OFFICIAL
+
+prohibited_as_sole_evidence:
+  - Directory listing description alone
+  - Referral without official source
+  - Search snippet without page verification

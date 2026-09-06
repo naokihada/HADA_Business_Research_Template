@@ -1,0 +1,35 @@
+# Confidence Rules — Example Project
+
+levels:
+  HIGH:
+    label_ja: 高
+    criteria: |
+      Most important claims supported by Tier 1 or Tier 2 evidence.
+      No major contradictions. Key gates confirmed YES where required.
+  MEDIUM:
+    label_ja: 中
+    criteria: |
+      Many important claims supported. Some significant areas UNKNOWN.
+      No hard gate failures.
+  LOW:
+    label_ja: 低
+    criteria: |
+      Score depends substantially on incomplete information or Tier 4 sources.
+  INSUFFICIENT_DATA:
+    label_ja: データ不足
+    criteria: |
+      Cannot assess key claims. Use when evidence is too sparse for MEDIUM.
+
+rules:
+  - Confidence is independent of score_total
+  - High score with LOW confidence is not equivalent to high score with HIGH confidence
+  - UNKNOWN on a required-for-shortlist gate caps confidence at MEDIUM unless documented
+  - Referrals alone do not raise confidence above MEDIUM for capability claims
+
+shortlist_confidence_caps:
+  TIER_1:
+    min_confidence: MEDIUM
+  TIER_2:
+    min_confidence: LOW
+  TIER_3:
+    min_confidence: LOW

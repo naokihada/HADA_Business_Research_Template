@@ -1,0 +1,34 @@
+# Discovery Sources — Example Project
+
+sources:
+  - key: vendor_directory_alpha
+    label_ja: ベンダーディレクトリ Alpha（架空）
+    label_en: Vendor Directory Alpha (fictional)
+    wave_id: wave1
+    id_prefix: W1
+    type: directory
+    trust_level: discovery_only
+    notes: Directory listing is not proof of capability
+
+  - key: analyst_shortlist_beta
+    label_ja: アナリストショートリスト Beta（架空）
+    label_en: Analyst Shortlist Beta (fictional)
+    wave_id: wave2
+    id_prefix: W2
+    type: curated_list
+    trust_level: discovery_only
+    notes: Referral or analyst list — requires independent verification
+
+  - key: manual_referral
+    label_ja: 手動紹介
+    label_en: Manual referral
+    wave_id: any
+    type: referral
+    trust_level: tier_3_referral
+    notes: Record introducer in master CSV referral column
+
+import_rules:
+  - Preserve original source values in master CSV source column
+  - Do not delete duplicate rows at import — mark during entity resolution
+  - Assign wave_id and candidate_id prefix from source configuration
+  - Set research_status to DISCOVERED or NOT_RESEARCHED on import

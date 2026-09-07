@@ -4,7 +4,7 @@ Reusable, domain-independent framework for evidence-based business research — 
 
 **Complete fictional demonstration:** [HADA_Business_Research_Template_Sample](https://github.com/naokihada/HADA_Business_Research_Template_Sample) — a full cloud-vendor comparison pipeline with simulated evidence.
 
-Japanese information is available further down this page.
+日本語の情報は、このページの下にあります。
 
 ---
 

@@ -1,6 +1,25 @@
 # AGENTS.md — HADA Business Research Template
 
-Portable operating rules for humans and AI agents working in this repository.
+Portable operating rules for humans and **all coding agents** (Cursor, Claude Code,
+Codex, and others) working in this repository.
+
+---
+
+## Documentation Layers
+
+Do not treat agent-specific configuration as the primary source of project rules.
+
+| Layer | Location | Purpose |
+|---|---|---|
+| Agent-independent instructions | `AGENTS.md` (this file) | Shared operating rules for any coding agent |
+| Design documentation | `docs/design/` | Data model, logging architecture, and related design notes |
+| User overview | `README.md` | Human-facing overview |
+| Agent-specific adapters | `.cursor/rules/`, etc. | Thin pointers to this file — not a second source of truth |
+
+Read this file before project work. Read `docs/design/` when you need data-model
+or validation details. Read `README.md` for user-facing overview.
+
+Adapter index: [docs/agents/README.md](docs/agents/README.md)
 
 ---
 
@@ -116,6 +135,9 @@ Source tiers (configurable labels):
 
 Tier 4 alone is insufficient for important qualification claims.
 
+Prefer first-party official sources. Secondary sources may be discovery leads but
+should not silently become verified facts.
+
 Do not present inference as verified fact. Do not fabricate contact information,
 credentials, locations, or capabilities.
 
@@ -146,6 +168,22 @@ DO:
 - append a research log entry after completing a bounded task
 - stop and wait for the next instruction
 
+### Per-task procedure
+
+1. Read this file and the active project config under `config/research/<project-id>/`.
+2. Identify the requested scope and inputs.
+3. Perform only the requested pass.
+4. Save the requested artifacts under `research/<project-id>/`.
+5. Append one row to `logs/research/<project-id>.md`.
+6. Report completion and stop.
+
+### Candidate universe
+
+Do not silently expand the candidate universe during scoring or shortlist phases.
+
+Newly discovered candidates may be recorded as research leads or a new wave — not
+added to the scoring population without an explicit scope decision.
+
 ---
 
 ## Master Data Protection
@@ -158,6 +196,18 @@ finding in the dossier, evidence, or research log — and flag for human review.
 
 When normalizing inbox content, preserve the original material before moving
 structured facts into master data.
+
+### Inbox normalization
+
+When organizing `data/inbox/` content:
+
+- preserve the original content
+- copy structured facts into the appropriate master or research location
+- leave uncertain items in inbox with a flag for review
+
+Save external research under `research/<project-id>/`. Domain-specific gates,
+rubrics, shortlist rules, and QC modules are configured under
+`config/research/<project-id>/` — not hard-coded in engine templates.
 
 ---
 
@@ -186,6 +236,23 @@ recommendation strength even when score is high.
 Referrals and popularity are discovery signals — not automatic proof of
 capability. Do not auto-bonus scores for referrals or review counts.
 
+### QC module procedure
+
+Before running a QC module:
+
+1. Read `config/research/<project-id>/modules.yaml`.
+2. Confirm scope (all candidates, top-N, shortlist-only).
+3. Use the module template from `templates/qc_result.md`.
+4. Write per-candidate evidence under `research/<project-id>/evidence/<module>/`.
+5. Write summary CSV under `research/<project-id>/scoring/`.
+6. Append validation notes to `logs/validation/<project-id>/` when appropriate.
+
+QC outcomes may change shortlist membership independently of numeric score.
+
+Do not run QC modules that are not enabled in project configuration unless
+explicitly requested. Skip conditions (e.g. NOT_ELIGIBLE) must be recorded — not
+silently omitted.
+
 ---
 
 ## Ranking Safety
@@ -213,14 +280,22 @@ After bounded tasks, append to the appropriate log:
 | Task type | Log location |
 |---|---|
 | Research execution | `logs/research/<project-id>.md` |
-| Rule or rubric change | `logs/decisions/` |
-| QC validation | `logs/validation/<project-id>/` |
+| Template development | `logs/development/YYYY-MM-DD-<topic>.md` |
+| Rule or rubric change | `logs/decisions/YYYY-MM-DD-<slug>.md` |
+| QC or validation pass | `logs/validation/<project-id>/YYYY-MM-DD-<module>.md` |
+
+Each entry should include: date, project_id, action, artifact path, brief notes.
+
+When applicable, also include: execution_id, prompt file path (not full prompt
+text), and counts (candidates processed, pass/fail).
 
 Do not log passwords, API keys, tokens, credentials, or unnecessary personal
 information. Redact sensitive content if encountered during research.
 
 Log task scope, artifact paths, counts, and decisions — not full raw AI
 transcripts by default.
+
+Update `logs/artifacts-index.md` when creating major dated outputs.
 
 ---
 
@@ -252,22 +327,36 @@ Do not store secrets in this repository.
 
 ---
 
-## Cursor Integration
+## Coding Agent Integration
 
-Portable rules live here in `AGENTS.md`. Cursor-specific behavior lives under
-`.cursor/rules/`. Do not put essential project knowledge only in Cursor rules.
+All essential project knowledge belongs in this file, `docs/design/`, or other
+user-facing docs — not in a single agent's configuration alone.
 
 Reusable task prompts live under `prompts/`. Reference config paths and
 templates — do not embed domain rubrics in prompts.
 
-### Cursor prompt formatting rule (mandatory)
+Use **relative paths** from the repository root in all instructions and outputs.
 
-Never create nested quotations in Cursor instructions or prompt files.
+### Prompt formatting rule (mandatory)
+
+Never create nested quotations in agent instructions or prompt files.
 
 Do not place a quoted block inside another quoted block.
 
 Prefer headings, bullet lists, numbered sections, indentation, file paths, and
 plain text descriptions.
+
+Enforced by `tools/check_prompts.py`.
+
+### Agent adapters
+
+| Agent | Adapter | Role |
+|---|---|---|
+| Cursor | `.cursor/rules/` | Auto-loaded thin pointers to sections in this file |
+| Others | See [docs/agents/README.md](docs/agents/README.md) | Add an adapter only when needed; always reference this file |
+
+Do not copy shared rules into adapter files. Adapters may add IDE-specific
+operational notes only.
 
 ---
 

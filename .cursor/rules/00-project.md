@@ -1,11 +1,14 @@
-# Project Context
+# Cursor Adapter — Project Context
 
-Read `AGENTS.md` at the repository root before any research or template work.
+Canonical source: [AGENTS.md](../../AGENTS.md)
 
-This is a **generic** business research template — not a domain-specific
-application. Domain rules live in `config/research/<project-id>/`.
+Read AGENTS.md before any research or template work. Sections to load first:
 
-Portable project rules are in `AGENTS.md`. Cursor rules here add IDE-specific
-guidance only. Do not contradict `AGENTS.md`.
+- Documentation Layers
+- Mission
+- Architecture Principles
 
-Use **relative paths** from the repository root in all instructions and outputs.
+This file is a Cursor-only entry point. It does not define project rules.
+Use relative paths from the repository root.
+
+Other coding agents should read AGENTS.md directly.
